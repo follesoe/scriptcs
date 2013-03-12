@@ -5,8 +5,8 @@ using ScriptCs.Contracts;
 
 namespace ScriptCs
 {
-    [Export(Constants.RunContractName, typeof(IScriptExecutor))]
-    public class ScriptExecutor : IScriptExecutor
+    [Export(Constants.MonoContractName, typeof(IScriptExecutor))]
+    public class MonoScriptExecutor : IScriptExecutor
     {
         protected readonly IFileSystem _fileSystem;
         private readonly IFilePreProcessor _filePreProcessor;
@@ -14,7 +14,7 @@ namespace ScriptCs
         private readonly IScriptHostFactory _scriptHostFactory;
 
         [ImportingConstructor]
-        public ScriptExecutor(IFileSystem fileSystem, [Import(Constants.RunContractName)]IFilePreProcessor filePreProcessor, [Import(Constants.RunContractName)]IScriptEngine scriptEngine, IScriptHostFactory scriptHostFactory)
+        public MonoScriptExecutor(IFileSystem fileSystem, [Import(Constants.MonoContractName)]IFilePreProcessor filePreProcessor, [Import(Constants.MonoContractName)]IScriptEngine scriptEngine, IScriptHostFactory scriptHostFactory)
         {
             _fileSystem = fileSystem;
             _filePreProcessor = filePreProcessor;
@@ -22,14 +22,8 @@ namespace ScriptCs
             _scriptHostFactory = scriptHostFactory;
         }
 
-        public ScriptExecutor(IFileSystem fileSystem, IFilePreProcessor filePreProcessor, IScriptEngine scriptEngine) :
-            this(fileSystem, filePreProcessor, scriptEngine, new ScriptHostFactory())
-        {
-
-        }
-
         public void Execute(string script, IEnumerable<string> paths, IEnumerable<IScriptPack> scriptPacks)
-        {
+        {            
             _scriptEngine.AddReference("System");
             _scriptEngine.AddReference("System.Core");
 

@@ -7,5 +7,6 @@ namespace ScriptCs
 
         public const string DebugContractName = "Debug";
         public const string RunContractName = "Run";
+        public const string MonoContractName = "Mono";
     }
 }

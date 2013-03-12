@@ -1,4 +1,5 @@
-﻿using Roslyn.Scripting;
+﻿using System.ComponentModel.Composition;
+using Roslyn.Scripting;
 
 namespace ScriptCs.Wrappers
 {

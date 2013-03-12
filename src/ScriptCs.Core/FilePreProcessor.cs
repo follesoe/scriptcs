@@ -6,6 +6,7 @@ using System.Linq;
 namespace ScriptCs
 {
     [Export(Constants.RunContractName, typeof(IFilePreProcessor))]
+    [Export(Constants.MonoContractName, typeof(IFilePreProcessor))]
     public class FilePreProcessor : IFilePreProcessor
     {
         private const string LoadString = "#load ";

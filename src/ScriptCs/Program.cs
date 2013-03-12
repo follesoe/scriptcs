@@ -33,7 +33,7 @@ namespace ScriptCs
                 }
             }
 
-            var contractsMode = debug ? Constants.DebugContractName : Constants.RunContractName;
+            var contractsMode = debug ? Constants.DebugContractName : Constants.MonoContractName; //Constants.RunContractName;
 
             var container = ConfigureMef();
             var fileSystem = container.GetExportedValue<IFileSystem>();

@@ -4,7 +4,9 @@ using Roslyn.Scripting.CSharp;
 
 namespace ScriptCs.Wrappers
 {
-    internal class ScriptEngineWrapper : IScriptEngine
+    [Export(Constants.RunContractName, typeof(IScriptEngine))]
+    [Export(Constants.DebugContractName, typeof(IScriptEngine))]
+    public class ScriptEngineWrapper : IScriptEngine
     {
         private CommonScriptEngine _scriptEngine;
 
@@ -51,5 +53,5 @@ namespace ScriptCs.Wrappers
         {
             return new SessionWrapper(_scriptEngine.CreateSession(hostObject, hostObjectType));
         }
-    }
+    }     
 }

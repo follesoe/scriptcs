@@ -8,7 +8,13 @@
     <AssemblyName>ScriptCs.Core</AssemblyName>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Mono.CSharp">
+      <HintPath>..\..\packages\Mono.CSharp.4.0\Lib\net40\Mono.CSharp.dll</HintPath>
+    </Reference>
     <Reference Include="NuGet.Core, Version=2.2.31210.9045, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Nuget.Core.2.2.0\lib\net40-Client\NuGet.Core.dll</HintPath>
@@ -33,6 +39,7 @@
   <ItemGroup>
     <Compile Include="CompilationResult.cs" />
     <Compile Include="ConsoleCompiledDllDebugger.cs" />
+    <Compile Include="MonoScriptExecutor.cs" />
     <Compile Include="DebugFilePreProcessor.cs" />
     <Compile Include="DebugScriptExecutor.cs" />
     <Compile Include="Exceptions\CompilationException.cs" />
@@ -73,6 +80,8 @@
     <Compile Include="ScriptPackSession.cs" />
     <Compile Include="ISubmission.cs" />
     <Compile Include="Wrappers\CompilationWrapper.cs" />
+    <Compile Include="Wrappers\MonoScriptEngineWrapper.cs" />
+    <Compile Include="Wrappers\MonoSessionWrapper.cs" />
     <Compile Include="Wrappers\ScriptEngineWrapper.cs" />
     <Compile Include="Wrappers\SessionWrapper.cs" />
     <Compile Include="Wrappers\SubmissionWrapper.cs" />
